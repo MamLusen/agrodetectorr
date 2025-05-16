@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Данные о растениях
+
     const plantsData = [
         {
             id: 1,
@@ -149,8 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             type: 'pests'
         },
     ];
-
-    // Элементы DOM
+    
     const plantsContainer = document.getElementById('plants-container');
     const modal = document.getElementById('plant-modal');
     const modalImage = document.getElementById('modal-image');
@@ -160,14 +159,66 @@ document.addEventListener('DOMContentLoaded', function() {
     const badBtn = document.getElementById('bad-btn');
     const goodBtn = document.getElementById('good-btn');
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const showResultsBtn = document.getElementById('show-results-btn');
+    const resultText = document.getElementById('result-text');
+    const roleModal = document.getElementById('role-modal');
+    const agronomistBtn = document.getElementById('agronomist-btn');
+    const foremanBtn = document.getElementById('foreman-btn');
+    const startCheckBtn = document.querySelector('.btn[href="#gallery"]');
 
-    // Текущее выбранное растение
+    startCheckBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        roleModal.style.display = 'block';
+    });
+    
+    agronomistBtn.addEventListener('click', function() {
+        roleModal.style.display = 'none';
+        window.location.href = "#gallery";
+        console.log("Выбрана роль: Агроном");
+    });
+    
+    foremanBtn.addEventListener('click', function() {
+        roleModal.style.display = 'none';
+        window.location.href = "#gallery";
+        console.log("Выбрана роль: Бригадир");
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === roleModal) {
+            roleModal.style.display = 'none';
+        }
+    });
+
     let currentPlantId = null;
     
-    // Загрузка оценок из localStorage
     let ratings = JSON.parse(localStorage.getItem('plantRatings')) || {};
 
-    // Отображение растений
+    function checkCompletion() {
+        const allRated = plantsData.every(plant => ratings[plant.id]);
+        showResultsBtn.style.display = allRated ? 'block' : 'none';
+        return allRated;
+    }
+
+function showResults() {
+    const healthyCount = plantsData.filter(plant => ratings[plant.id] === 'good').length;
+    const problemCount = plantsData.length - healthyCount;
+    
+    let resultHTML = `
+        <h3>Результаты анализа</h3>
+        <p>Вы проанализировали ${plantsData.length} растений:</p>
+        <p>✅ Здоровые растения: ${healthyCount}</p>
+        <p>❌ Проблемные растения: ${problemCount}</p>
+        <p class="final-result">лалалала блаблабла улюлюлю говня</p>
+        <div class="pdf-download">
+            <a href="path/to/your/file.pdf" class="pdf-link" download>
+                <i class="fas fa-file-pdf"></i> Скачать отчет в PDF
+            </a>
+        </div>
+    `;
+    
+    resultText.innerHTML = resultHTML;
+    resultText.style.display = 'block';
+}
     function renderPlants(filter = 'all') {
         plantsContainer.innerHTML = '';
         
@@ -194,9 +245,10 @@ document.addEventListener('DOMContentLoaded', function() {
             plantCard.addEventListener('click', () => openModal(plant));
             plantsContainer.appendChild(plantCard);
         });
+        
+        checkCompletion();
     }
 
-    // Открытие модального окна
     function openModal(plant) {
         currentPlantId = plant.id;
         modalImage.src = plant.image;
@@ -205,46 +257,42 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'block';
     }
 
-    // Закрытие модального окна
     function closeModal() {
         modal.style.display = 'none';
         currentPlantId = null;
     }
 
-    // Оценка растения
     function ratePlant(isBad) {
         if (!currentPlantId) return;
         
         ratings[currentPlantId] = isBad ? 'bad' : 'good';
         localStorage.setItem('plantRatings', JSON.stringify(ratings));
         
-        // Обновляем отображение
         const statusElement = document.querySelector(`.plant-card[data-id="${currentPlantId}"] .plant-status`);
         statusElement.textContent = isBad ? '❌' : '✅';
         
         closeModal();
+        renderPlants();
+        checkCompletion();
     }
 
-    // Фильтрация растений
     function setActiveFilter(e) {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
         renderPlants(e.target.dataset.filter);
     }
 
-    // Обработчики событий
     closeBtn.addEventListener('click', closeModal);
     badBtn.addEventListener('click', () => ratePlant(true));
     goodBtn.addEventListener('click', () => ratePlant(false));
     filterButtons.forEach(btn => btn.addEventListener('click', setActiveFilter));
+    showResultsBtn.addEventListener('click', showResults);
     
-    // Закрытие модального окна при клике вне его
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeModal();
         }
     });
 
-    // Первоначальная загрузка
     renderPlants();
 });
