@@ -240,12 +240,14 @@ body {
 
 .bad-btn {
     background-color: var(--red);
-    flex: 1;
+    color: #fff;
+    border: 2px solid var(--red);
 }
 
 .good-btn {
     background-color: var(--primary-color);
-    flex: 1;
+    color: #fff; /* Белый текст */
+    border: 2px solid var(--primary-color);
 }
 
 /* Footer */
