@@ -3,35 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const plantsData = [
         {
             id: 1,
-            image: 'file:///C:/Users/user/Desktop/agrodetector/images/cochliobolus_sativus.jpg',
+            image: 'https://i.ibb.co/WN6pStgh/cochliobolus-sativus.jpg',
             diagnosis: 'Гельминтоспориоз колоса',
             description: 'Темно-бурые пятна на чешуйках колоса. Протравливание семян. Для этого используйте протравители ВАЙБРАНС™ ИНТЕГРАЛ, ВАЙБРАНС® ТРИО, МАКСИМ®, МАКСИМ® ФОРТЕ, СЕЛЕСТ® МАКС. Обработка фунгицидами АМИСТАР ТРИО®, АМИСТАР ЭКСТРА®, МАГНЕЛЛО®, МЕНАРА® во время вегетации.',
             type: 'disease'
         },
         {
             id: 2,
-            image: 'file:///C:/Users/user/Desktop/agrodetector/images/erysiphe_graminis5.jpg',
+            image: 'https://i.ibb.co/DPn2491m/erysiphe-graminis5.jpg',
             diagnosis: 'Мучнистая роса',
             description: 'На надземной части зерновых образуются белые, похожие на вату, скопления мицелия и конидий, которые можно легко отодвинуть ногтем. Обработка вегетирующих растений фунгицидами АМИСТАР ТРИО®, АМИСТАР ЭКСТРА®, МАГНЕЛЛО®, МЕНАРА®, ТИЛТ ТУРБО®, ЭЛАТУС™РИА. Избегать чрезмерного загущения и избытка азотных удобрений.',
             type: 'disease'
         },
         {
             id: 3,
-            image: 'file:///C:/Users/user/Desktop/agrodetector/images/vasilek_siniy_2.jpg',
+            image: 'https://i.ibb.co/KcHcqSKf/vasilek-siniy-2.jpg',
             diagnosis: 'Василек синий',
             description: 'Удалите растение вручную, стараясь выкопать корень полностью. Может быть устойчив к некоторым гербицидам.',
             type: 'weed'
         },
         {
             id: 4,
-            image: 'file:///C:/Users/user/Desktop/agrodetector/images/bipolaris_sorokiniana_2.jpg',
+            image: 'https://i.ibb.co/SDFV09PM/bipolaris-sorokiniana-2.jpg',
             diagnosis: 'Прикорневая гниль',
             description: 'На проростках появляются бурые пятна, в начальной стадии штрихообразные, может происходить загнивание первичных корней. Со временем наблюдается побурение основания стебля, узла кущения, корней, возможна пустоколосость. Обработка семян препаратами МАКСИМ® ФОРТЕ, СЕЛЕСТ® МАКС, ВАЙБРАНС™ ИНТЕГРАЛ, ВАЙБРАНС® ТРИО.',
             type: 'disease'
         },
         {
             id: 5,
-            image: 'file:///C:/Users/user/Desktop/agrodetector/images/18d18b29b96cc92312bc687d3d0281d3.jpg',
+            image: 'https://i.ibb.co/KpMKk8KW/18d18b29b96cc92312bc687d3d0281d3.jpg',
             diagnosis: 'Здоровое растение',
             description: 'Пшеница в стадии кущения, в хорошем состоянии. Продолжайте текущий уход, регулярно осматривайте на признаки заболеваний.',
             type: 'healthy'
