@@ -192,7 +192,6 @@ function showResults() {
         <p>Вы проанализировали ${plantsData.length} растений:</p>
         <p>✅ Здоровые растения: ${healthyCount}</p>
         <p>❌ Проблемные растения: ${problemCount}</p>
-        <p class="final-result">лалалала блаблабла улюлюлю говня</p>
         <div class="pdf-download">
             <a href="file:///C:/Users/user/Desktop/agrodetector/Результат.pdf" class="pdf-link" download>
                 <i class="fas fa-file-pdf"></i> Скачать отчет в PDF
