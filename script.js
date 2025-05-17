@@ -193,7 +193,7 @@ function showResults() {
         <p>✅ Здоровые растения: ${healthyCount}</p>
         <p>❌ Проблемные растения: ${problemCount}</p>
         <div class="pdf-download">
-            <a href="file:///C:/Users/user/Desktop/agrodetector/Результат.pdf" class="pdf-link" download>
+            <a href="https://limewire.com/d/m4awM#V2QL75H9Tt" class="pdf-link" download>
                 <i class="fas fa-file-pdf"></i> Скачать отчет в PDF
             </a>
         </div>
